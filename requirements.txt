@@ -2,3 +2,4 @@ rasterio
 streamlit
 streamlit-folium
 segment-geospatial
+google-generativeai
