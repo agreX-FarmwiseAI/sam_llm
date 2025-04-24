@@ -1,0 +1,3 @@
+rasterio
+streamlit
+segment-geospatial
