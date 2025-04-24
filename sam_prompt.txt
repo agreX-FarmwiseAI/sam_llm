@@ -1,0 +1,67 @@
+## Land Classification from Satellite Imagery - Multi-Stage Process (JSON Output)
+
+**OVERALL GOAL:**  To accurately classify the primary land cover type within a provided high-resolution (30cm) satellite image and provide a justified confidence score, all delivered in a JSON format.
+
+**INPUT:** A high-resolution (30cm) satellite image.  (Image will be provided separately).
+
+**STAGES:**
+
+**STAGE 1: Initial Assessment and Feature Extraction**
+
+1.  **Describe Key Visual Features:**  Without yet classifying, list the dominant visual characteristics observed in the image.  Consider the following aspects and be as specific as possible:
+    *   **Colors:**  What are the predominant colors and their variations? (e.g., "Mostly shades of green, with some patches of brown and gray.")
+    *   **Textures:** Describe the textures present.  Are they smooth, rough, regular, irregular, patterned? (e.g., "Regular grid pattern," "Irregular, mottled texture," "Smooth, uniform surface.")
+    *   **Shapes:** Identify any distinct shapes. Are they geometric, organic, linear? (e.g., "Rectangular shapes with sharp edges," "Curvilinear features," "Long, narrow strips.")
+    *   **Contextual Clues:**  Are there any features that provide context? (e.g., "Presence of roads," "Proximity to a coastline," "Surrounded by similar features.")
+
+2.  **Potential Classifications:** Based on the features described, list *all* of the provided land cover types that could *potentially* be present, even if some seem less likely.  The possible classifications are:
+    *   Buildings
+    *   Waterbody
+    *   Farms
+    *   Fallow Land
+    *   Coconut Farms
+    *   Trees
+    *   Others
+
+**STAGE 2:  Classification and Justification**
+
+1.  **Primary Classification:** Select the *single* land cover type from the list above that best represents the *dominant* land cover in the image.  State this clearly.  If none of the provided categories fit well, choose "Others".
+
+2.  **Detailed Justification:** Provide a detailed explanation of *why* you chose this classification.  Refer back to the specific visual features you identified in Stage 1.  Explain how those features support your chosen classification.  Be explicit and logical.  For example:
+    *   "The dominant rectangular shapes with sharp edges, combined with the presence of roads and a gray color, strongly suggest the presence of Buildings."
+    *   "The smooth, uniform texture and dark blue color are characteristic of a Waterbody."
+    *   "The regular grid pattern and variations in green and brown suggest cultivated land, likely Farms."
+    *   "The distinctive texture of tall, regularly spaced trees with a specific crown shape is indicative of Coconut Farms."
+    *   "The irregular, mottled texture and predominantly green color suggest a dense canopy of Trees."
+    *   "The observed features do not strongly match any of the predefined categories, therefore 'Others' is selected.  The features include [describe the features that don't fit]."
+
+3. **Alternative Classifications Consideration:**
+     * Briefly discuss why you *rejected* the other potential classifications. Explain the visual evidence that argues *against* each alternative.
+
+**STAGE 3: Confidence and Reasoning**
+
+1.  **Confidence Score:** Assign a confidence score between 0 and 100 (inclusive) to your primary classification.  A score of 100 represents absolute certainty, while 0 represents no confidence.
+
+2.  **Confidence Justification:**  Explain *why* you assigned this particular confidence score.  Consider the following factors:
+    *   **Clarity of Features:** How clearly do the visual features in the image match the characteristics of your chosen land cover type?
+    *   **Ambiguity:** Are there any features that could be interpreted in multiple ways, potentially leading to different classifications?
+    *   **Image Quality:** Is the image quality sufficient to make a confident determination? (Even though it's high-resolution, are there any artifacts, shadows, or other issues that might affect your analysis?)
+    *   **Contextual Information:** Does the surrounding area (if visible) support or contradict your classification?
+
+**STAGE 4: Self-Critique (Optional, but Encouraged)**
+
+1.  **Potential Errors:**  Identify any potential sources of error or uncertainty in your analysis.  What are the *weakest* points in your reasoning?
+2.  **Improvements:**  If you had access to additional information (e.g., location data, multi-spectral imagery, time-series data), how could it improve the accuracy and confidence of your classification?
+
+**OUTPUT FORMAT:  STRICTLY JSON**
+
+Provide your response *exclusively* in the following JSON format.  Do not include any text outside of the JSON structure.  The reasoning should be concise but complete, capturing the key justifications from Stages 2 and 3.
+
+```json
+{
+  "classification": "Land Cover Type",
+  "confidence": Number,
+  "reasoning": "Concise explanation of classification and confidence, referencing key visual features and addressing alternative classifications."
+}
+
+
